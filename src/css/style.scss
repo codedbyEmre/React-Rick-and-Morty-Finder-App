@@ -1,0 +1,107 @@
+@import url('bulma/css/bulma.min.css');
+
+.main {
+  @media (max-width: 1023px) {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+.navbar-menu {
+  .navbar-end {
+    .navbar-item {
+      &.active {
+        background-color: #3a51bb;
+      }
+    }
+  }
+  @media (max-width: 1023px) {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    .navbar-end {
+      .navbar-item {
+        &.active {
+          background-color: #f2f2f2;
+        }
+      }
+    }
+  }
+}
+
+.characters-container {
+  .search {
+    width: 50% !important;
+  }
+  .searchInput,
+  .searchBtn {
+    height: 3rem !important;
+  }
+  @media (max-width: 48rem) {
+    .search {
+      width: 100% !important;
+    }
+  }
+
+  .characters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    grid-gap: 1.25rem;
+    .card {
+      cursor: pointer;
+      transition: 0.3s ease all;
+      &:hover {
+        box-shadow: 0px 0.5rem 0.75rem rgba(0, 0, 0, 0.2);
+        transform: translateY(-0.5rem);
+      }
+      .card-image {
+        .image {
+          img {
+            object-fit: cover !important;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.loading {
+  text-align: center !important;
+  .circle {
+    display: inline-block;
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    text-align: center;
+    div {
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      width: 3rem;
+      height: 3rem;
+      margin: 0.5rem;
+      border: 0.3rem solid #fff;
+      border-radius: 50%;
+      animation: circle 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: #485fc7 transparent transparent transparent;
+      &:nth-child(1) {
+        animation-delay: -0.45s;
+      }
+      &:nth-child(2) {
+        animation-delay: -0.3s;
+      }
+      &:nth-child(3) {
+        animation-delay: -0.15s;
+      }
+    }
+    @keyframes circle {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
