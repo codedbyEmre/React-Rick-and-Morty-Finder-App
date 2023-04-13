@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import BackButton from '../Shared/BackButton';
 
@@ -8,6 +8,17 @@ const CharacterDetails = () => {
 
   const [characterDetails, setCharacterDetails] = useState({});
   const [loading, setLoading] = useState(false);
+
+  // formatted episodes arr
+  const episodes = useMemo(() => {
+    let episodes = [];
+    characterDetails.episode?.forEach(ep => {
+      const splittedEpisodes = ep.split('/');
+      episodes.push(+splittedEpisodes[splittedEpisodes.length - 1]);
+    });
+    episodes.sort((a, b) => a - b);
+    return episodes;
+  }, [characterDetails.episode]);
 
   const getCharacterDetails = async () => {
     setLoading(true);
@@ -67,6 +78,16 @@ const CharacterDetails = () => {
                       <span className="has-text-dark">{characterDetails.created?.slice(0, 10)}</span>
                     </p>
                   </div>
+                </div>
+              </div>
+              <div className="px-5 mt-5 pb-3">
+                <p className="is-size-6 mb-2 has-text-grey">Appeared Episode Id(s):</p>
+                <div className="episodes">
+                  {episodes.map(episode => (
+                    <Link to={`/episode/${episode}`} key={episode} className="episode">
+                      {episode}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
