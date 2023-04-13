@@ -4,6 +4,8 @@ import CharacterDetails from '../Characters/CharacterDetails';
 import ViewEpisodes from './../../views/ViewEpisodes';
 import ViewLocations from './../../views/ViewLocations';
 import ViewPageNotFound from './../../views/ViewPageNotFound';
+import EpisodeDetail from '../Episodes/EpisodeDetail';
+import LocationDetails from '../Locations/LocationDetails';
 
 const Routers = () => {
   return (
@@ -14,9 +16,11 @@ const Routers = () => {
 
       {/* Episode routes */}
       <Route path="episodes" element={<ViewEpisodes />} />
+      <Route path="/episode/:id" element={<EpisodeDetail />} />
 
       {/* Locations routes */}
       <Route path="locations" element={<ViewLocations />} />
+      <Route path="/location/:id" element={<LocationDetails />} />
 
       {/* Page not found route */}
       <Route path="*" element={<ViewPageNotFound />} />

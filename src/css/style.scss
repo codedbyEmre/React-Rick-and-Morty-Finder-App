@@ -29,7 +29,9 @@
   }
 }
 
-.characters-container {
+.characters-container,
+.episodes-main,
+.locations {
   .search {
     width: 50% !important;
   }
@@ -43,7 +45,9 @@
     }
   }
 
-  .characters {
+  .characters,
+  .episode-main,
+  .location {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
     grid-gap: 1.25rem;
