@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import BackButton from '../Shared/BackButton';
 
@@ -8,6 +8,17 @@ const EpisodeDetail = () => {
 
   const [episodeDetails, setEpisodeDetails] = useState({});
   const [loading, setLoading] = useState(false);
+
+  // formatted characters arr
+  const characters = useMemo(() => {
+    let characters = [];
+    episodeDetails.characters?.forEach(ep => {
+      const splittedCharacters = ep.split('/');
+      characters.push(+splittedCharacters[splittedCharacters.length - 1]);
+    });
+    characters.sort((a, b) => a - b);
+    return characters;
+  }, [episodeDetails.characters]);
 
   const getEpisodeDetails = async () => {
     setLoading(true);
@@ -52,6 +63,16 @@ const EpisodeDetail = () => {
                         Air Date: <span className="has-text-dark">{episodeDetails.air_date}</span>
                       </p>
                     </div>
+                  </div>
+                </div>
+                <div className="px-5 mt-3 pb-3">
+                  <p className="is-size-6 mb-2 has-text-grey">Appeared Character Id(s):</p>
+                  <div className="characters-flex">
+                    {characters.map(character => (
+                      <Link to={`/character/${character}`} key={character} className="character-flex">
+                        {character}
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </div>

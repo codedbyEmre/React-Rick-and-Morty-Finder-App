@@ -1,14 +1,24 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import BackButton from '../Shared/BackButton';
-import Character from './../Characters/Character';
 
 const LocationDetails = () => {
   const { id } = useParams();
 
   const [locationDetails, setLocationDetails] = useState({});
   const [loading, setLoading] = useState(false);
+
+  // formatted residents arr
+  const residents = useMemo(() => {
+    let residents = [];
+    locationDetails.residents?.forEach(resident => {
+      const splittedResidents = resident.split('/');
+      residents.push(+splittedResidents[splittedResidents.length - 1]);
+    });
+    residents.sort((a, b) => a - b);
+    return residents;
+  }, [locationDetails.residents]);
 
   const getLocationDetails = async () => {
     setLoading(true);
@@ -56,12 +66,16 @@ const LocationDetails = () => {
                         Created Date: <span className="has-text-dark">{locationDetails.created?.slice(0, 10)}</span>
                       </p>
                     </div>
-                    {/* Characters grid */}
-                    {/* <div className="characters">
-                      {locationDetails.residents.map(resident => (
-                        <Character key={resident} />
-                      ))}
-                    </div> */}
+                  </div>
+                </div>
+                <div className="px-5 mt-3 pb-3">
+                  <p className="is-size-6 mb-2 has-text-grey">Resident Character Id(s):</p>
+                  <div className="residents">
+                    {residents.map(resident => (
+                      <Link to={`/character/${resident}`} key={resident} className="resident">
+                        {resident}
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </div>
