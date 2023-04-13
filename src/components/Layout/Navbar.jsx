@@ -30,15 +30,15 @@ const Navbar = () => {
 
           <div id="navbarBasicExample" className={showMobileNav ? 'navbar-menu py-0 is-active' : 'navbar-menu'}>
             <div className="navbar-end">
-              <NavLink to="/" className="navbar-item">
+              <NavLink to="/" onClick={toggleShowMbileNav} className="navbar-item">
                 Characters
               </NavLink>
 
-              <NavLink to="/episodes" className="navbar-item">
+              <NavLink to="/episodes" onClick={toggleShowMbileNav} className="navbar-item">
                 Episodes
               </NavLink>
 
-              <NavLink to="/locations" className="navbar-item">
+              <NavLink to="/locations" onClick={toggleShowMbileNav} className="navbar-item">
                 Locations
               </NavLink>
             </div>
