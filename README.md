@@ -6,6 +6,7 @@
 React 18
 React Router 6
 Bulma
+Scss
 Vite
 ```
 
