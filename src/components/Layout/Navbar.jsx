@@ -5,7 +5,7 @@ const Navbar = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
   const toggleShowMbileNav = () => {
-    setShowMobileNav(showMobileNav => !showMobileNav);
+    setShowMobileNav(!showMobileNav);
   };
 
   return (
