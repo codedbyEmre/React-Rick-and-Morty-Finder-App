@@ -49,7 +49,12 @@ const ViewLocations = () => {
       {/* Pagination */}
       <div className="pagination is-justify-content-between mt-6 mb-3 px-1">
         <div className="pagination-buttons">
-          <button onClick={() => changePage('prev')} disabled={page === 1 ?? true} className="button is-link">
+          <button
+            onClick={() => changePage('prev')}
+            disabled={page === 1 ?? true}
+            className="button is-link"
+            aria-label="previous button"
+          >
             <i className="fa-solid fa-arrow-left mr-2"></i>
             Prev
           </button>
@@ -57,6 +62,7 @@ const ViewLocations = () => {
             onClick={() => changePage('next')}
             disabled={page === info.pages ?? true}
             className="button is-link ml-3"
+            aria-label="next button"
           >
             Next
             <i className="fa-solid fa-arrow-right ml-2"></i>

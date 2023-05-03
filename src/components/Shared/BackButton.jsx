@@ -4,7 +4,7 @@ const BackButton = () => {
   const navigate = useNavigate();
 
   return (
-    <button onClick={() => navigate(-1)} className="button is-link mt-5">
+    <button onClick={() => navigate(-1)} className="button is-link mt-5" aria-label="back button">
       <span className="icon is-small">
         <i className="fas fa-arrow-left"></i>
       </span>
