@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
@@ -13,7 +13,9 @@ const Navbar = () => {
       <nav className="navbar is-link" role="navigation" aria-label="main navigation">
         <div className="container is-max-desktop">
           <div className="navbar-brand">
-            <div className="navbar-item is-size-4 is-family-monospace">Rick and Morty</div>
+            <Link to={'/'} className="navbar-item is-size-4 is-family-monospace">
+              Rick and Morty
+            </Link>
             <a
               onClick={toggleShowMbileNav}
               role="button"

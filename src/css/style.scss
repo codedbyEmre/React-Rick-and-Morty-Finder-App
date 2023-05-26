@@ -1,3 +1,11 @@
+$primary-color: hsl(229, 53%, 53%);
+
+.navbar-brand {
+  .navbar-item {
+    background-color: $primary-color !important;
+  }
+}
+
 .main {
   @media (max-width: 1023px) {
     padding-left: 0.75rem;
@@ -9,7 +17,7 @@
   .navbar-end {
     .navbar-item {
       &.active {
-        background-color: #3a51bb;
+        background-color: hsl(229, 53%, 48%);
       }
     }
   }
@@ -79,7 +87,7 @@
     height: 1rem;
     width: 1rem;
     padding: 1rem;
-    background-color: hsl(229, 53%, 53%);
+    background-color: $primary-color;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,7 +121,7 @@
       border: 0.3rem solid #fff;
       border-radius: 50%;
       animation: circle 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-      border-color: #485fc7 transparent transparent transparent;
+      border-color: $primary-color transparent transparent transparent;
       &:nth-child(1) {
         animation-delay: -0.45s;
       }
